@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Jul 25 22:34:33 2022
+# Make data base, printed on Thu Jul 28 23:20:45 2022
 
 # Variables
 
@@ -20,6 +20,8 @@ LC_ALL = C
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
 SSH_AGENT_LAUNCHER = gnome-keyring
+# environment
+GJS_DEBUG_OUTPUT = stderr
 # environment
 VSCODE_CWD = /home/deez
 # default
@@ -47,15 +49,13 @@ VSCODE_CODE_CACHE_PATH = /home/deez/.config/Code/CachedData/3b889b090b5ad5793f52
 # environment
 LANG = C
 # environment
-XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.T4UVP1
+XAUTHORITY = /run/user/1000/.mutter-Xwaylandauth.9KG1P1
 # default
 .LOADED := 
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # makefile
 MAKEFLAGS = pqrR
-# environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=7d2705cdf7ec233063bd021e62df4bc0
 # makefile
 CURDIR := /home/deez/Documents/Zyr
 # environment
@@ -83,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3541
+VSCODE_PID = 4893
 # makefile (from 'Makefile', line 2)
 sources = $(wildcard src/*.c)
 # environment
@@ -97,7 +97,7 @@ SESSION_MANAGER = local/deez-virtual-machine:@/tmp/.ICE-unix/1282,unix/deez-virt
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=7d2705cdf7ec233063bd021e62df4bc0
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -115,6 +115,8 @@ XMODIFIERS = @im=ibus
 # makefile (from 'Makefile', line 3)
 objects = $(sources:.c=.o)
 # environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
 SHLVL = 0
 # environment
 MAKELEVEL := 0
@@ -129,7 +131,7 @@ MAKEFILES :=
 # automatic
 ^F = $(notdir $^)
 # environment
-INVOCATION_ID = 5c3c09f810cc428da7588d6ebf535879
+INVOCATION_ID = 0ef7038a91fd4723a98b1fa6736e1df8
 # environment
 USERNAME = deez
 # environment
@@ -159,7 +161,7 @@ GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
 # makefile
 .DEFAULT_GOAL := zyr.out
 # environment
-SYSTEMD_EXEC_PID = 1282
+SYSTEMD_EXEC_PID = 1318
 # environment
 DISPLAY = :0
 # environment
@@ -169,17 +171,15 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-MANAGERPID = 1170
+MANAGERPID = 1167
 # environment
-DBUS_STARTER_BUS_TYPE = session
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3541
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4893
 # environment
 _ = /usr/share/code/code
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
-JOURNAL_STREAM = 8:44192
+JOURNAL_STREAM = 8:44466
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -209,7 +209,7 @@ flags = -g
 # environment
 GDMSESSION = ubuntu
 # variable set hash-table stats:
-# Load=98/1024=10%, Rehash=0, Collisions=5/131=4%
+# Load=98/1024=10%, Rehash=0, Collisions=4/131=3%
 
 # Pattern-specific Variable Values
 
@@ -218,10 +218,10 @@ GDMSESSION = ubuntu
 # Directories
 
 # include: could not be stat'd.
-# src (device 2051, inode 2097247): 5 files, no impossibilities.
-# . (device 2051, inode 2097235): 6 files, no impossibilities.
+# src (device 2051, inode 2097247): 9 files, no impossibilities.
+# . (device 2051, inode 2097235): 11 files, no impossibilities.
 
-# 11 files, no impossibilities in 3 directories.
+# 20 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -267,6 +267,12 @@ src/main.o:
 #  File has not been updated.
 
 # Not a target:
+src/token.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
@@ -275,14 +281,14 @@ all:
 
 install:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 14):
 	make
 	cp ./zyr.out /usr/local/bin/zyr
 
- 
-zyr.out: src/lexer.o src/main.o
+zyr.out: src/lexer.o src/main.o src/token.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -290,19 +296,19 @@ zyr.out: src/lexer.o src/main.o
 	gcc $(objects) $(flags) -o $(exec)
 
 # files hash-table stats:
-# Load=9/1024=1%, Rehash=0, Collisions=0/21=0%
+# Load=10/1024=1%, Rehash=0, Collisions=0/23=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 22 / storage = 175 B / avg = 7 B
-# current buf: size = 8162 B / used = 175 B / count = 22 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 31 / storage = 252 B / avg = 8 B
+# current buf: size = 8162 B / used = 252 B / count = 31 / avg = 8 B
 
-# strcache performance: lookups = 33 / hit rate = 33%
+# strcache performance: lookups = 43 / hit rate = 27%
 # hash-table stats:
-# Load=22/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Mon Jul 25 22:34:34 2022
+# Load=31/8192=0%, Rehash=0, Collisions=0/43=0%
+# Finished Make data base on Thu Jul 28 23:20:45 2022
 
  
