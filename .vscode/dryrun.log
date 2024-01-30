@@ -1,9 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/deez/Documents/Zyr'
-gcc -c -g src/lexer.c -o src/lexer.o
-gcc -c -g src/main.c -o src/main.o
- 
-gcc -c -g src/token.c -o src/token.o
-gcc src/lexer.o src/main.o src/token.o -g -o zyr.out
-make: Leaving directory '/home/deez/Documents/Zyr'
- 
