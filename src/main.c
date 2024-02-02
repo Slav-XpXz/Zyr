@@ -11,5 +11,8 @@ int main(int argc, char **argv[]){
     input_file = fopen(argv[2], "r");
     if(input_file==NULL){
         fprintf(stderr, "Error: file could not be opened!");
+        return 1;
     }
+
+    return 0;
 }
