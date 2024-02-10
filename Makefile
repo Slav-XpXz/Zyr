@@ -1,14 +1,14 @@
 CC = gcc
 
 output = bin/Zyr.exe
-objects := $(patsubst %.c,%.o,$(wildcard src/*.c))
+
+files = src/*.c
 
 
 
 
 Zyr: $(objects)
-	echo "Linking Object Files and generating binary."
-	$(CC) -o $(output) $(objects)
+	$(CC) -o $(output) $(files)
 	rm -f src/*.o	
 
 
