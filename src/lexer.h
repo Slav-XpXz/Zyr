@@ -1,5 +1,3 @@
-#pragma once
-
 
 enum Tokens{
 	tok_eof = -1,
@@ -19,9 +17,6 @@ static int gettok(){
 		continue;
 	}
 
-	if(c==EOF){
-		return tok_eof;
-	}
 
 	switch(c){
 		case '+':
@@ -43,5 +38,11 @@ static int gettok(){
 			c = getchar();
 			return tok_rparen;
 	}
+
+	if(c==EOF){
+		return tok_eof;
+	}
+
+
 }
 
